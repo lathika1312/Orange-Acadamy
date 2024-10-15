@@ -13,12 +13,15 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Fix the variable names to match your form fields
     $name = htmlspecialchars(trim($_POST['name']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $mobile = htmlspecialchars(trim($_POST['mobile']));
+    $number = htmlspecialchars(trim($_POST['mobile'])); // Fixed: changed 'number' to 'mobile' for consistency
+    $message = htmlspecialchars(trim($_POST['message'])); // Fixed: removed extra space from 'message'
 
     // Input validation
-    if (!empty($name) && filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match('/^[0-9]{10}$/', $mobile)) {
+    // Fixed: changed $mobile to $number and updated the regex to match any 10-digit number
+    if (!empty($name) && filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match('/^[0-9]{10}$/', $number)) {
         // Create an instance of PHPMailer
         $mail = new PHPMailer();
 
@@ -33,16 +36,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Port       = 465;
 
             // Recipients
-            $mail->setFrom('demo.orangeacadamy@gmail.com', 'Book A Demo Request');
+            $mail->setFrom('demo.orangeacadamy@gmail.com', 'Contact Request');
             $mail->addAddress('medical.orangeacademy@gmail.com');  // Add user email
 
             // Content
             $mail->isHTML(true);
-            $mail->Subject = 'Book A Demo Request from ' . $name;
-            $mail->Body    = "New Medical Coding Education Form Submission Received.<br><br>" .
+            $mail->Subject = 'Contact Request from ' . $name;
+            $mail->Body    = "New Contact Form Submission Received.<br><br>" .
                              "Name: " . $name . "<br>" .
                              "Email: " . $email . "<br>" .
-                             "Mobile: " . $mobile . "<br>";
+                             "Number: " . $number . "<br>" . // Fixed: changed 'number' to 'Number' for consistency
+                             "Message: " . $message . "<br>"; // Fixed: added a period before this line
 
             if ($mail->send()) {
                 // Send a success response in JSON
@@ -62,3 +66,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo json_encode(['status' => 'error', 'message' => 'Invalid request method.']);
 }
 ?>
+

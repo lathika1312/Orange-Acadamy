@@ -420,95 +420,121 @@ document.getElementById("demoForm").addEventListener("submit", function(event) {
     <!-- /.main-header -->
     <!-- /.main-header -->
 
-        <section class="contact-page section-space-top">
-            <div class="contact-page__inner section-space">
+    <section class="contact-page section-space-top">
+        <div class="contact-page__inner section-space">
             <center><h2 class="page-header__title">Contact us</h2></center>
-            <br>
-            <br>
-                <div class="container">
-                    <div class="row gutter-y-40 align-items-center">
-                        <div class="col-xl-7 col-lg-6 order-1 order-lg-0 wow fadeInUp" data-wow-duration="1500ms">
-                            <div class="contact-page__form">
-                                <form action="https://pixydrops.com/mediox-html/assets/inc/sendemail.php" class="contact-form-validated form-one">
-                                    <div class="form-one__group">
-                                        <div class="form-one__control form-one__control--full">
-                                            <input type="text" name="name" placeholder="Full Name">
-                                        </div><!-- /.form-one__control -->
-                                        <div class="form-one__control form-one__control--full">
-                                            <input type="email" name="email" placeholder="Email Address">
-                                        </div><!-- /.form-one__control -->
-                                        <div class="form-one__control form-one__control--full">
-                                            <input type="tel" name="number" placeholder="Phone Number">
-                                        </div><!-- /.form-one__control -->
-                                        <div class="form-one__control form-one__control--full">
-                                            <textarea name="message" placeholder="Write Message . . ."></textarea>
-                                        </div><!-- /.form-one__control -->
-                                        <div class="form-one__control form-one__control--full">
-                                            <button type="submit" class="mediox-btn">
-                                                <span>send message</span>
-                                                <span class="mediox-btn__icon"><i class="icon-up-right-arrow"></i></span>
-                                            </button>
-                                            <!-- /.mediox-btn -->
-                                        </div><!-- /.form-one__control -->
-                                    </div><!-- /.form-one__group -->
-                                </form><!-- /.form-one -->
-                                <div class="result"></div><!-- /.result -->
-                            </div><!-- /.contact-page__form -->
-                        </div><!-- /.col-xl-7 col-lg-6 -->
-                        <div class="col-xl-5 col-lg-6 order-0 order-lg-1">
-                            <div class="contact-page__info">
-                                <div class="sec-title @@extraClassName wow fadeInUp" data-wow-duration="1500ms">
-                                    <div class="sec-title__top">
-
-                                        <!-- <img src="assets/images/shapes/sec-title-s-1-1.png" alt="contact us" class="sec-title__img"> -->
-
-
-                                        <h6 class="sec-title__tagline">contact us</h6><!-- /.sec-title__tagline -->
-
-                                    </div><!-- /.sec-title__top -->
-                                    <h3 class="sec-title__title">Just Say <span>Hello!</span></h3><!-- /.sec-title__title -->
-                                </div><!-- /.sec-title -->
-                                <div class="contact-page__info__inner wow fadeInUp" data-wow-duration="1500ms">
-                                    <div class="contact-page__info__item">
-                                        <span class="contact-page__info__icon">
-                                            <i class="icon-telephone-2"></i>
-                                        </span><!-- /.contact-page__info__icon -->
-                                        <div class="contact-page__info__content">
-                                            <h4 class="contact-page__info__title">call now</h4>
-                                            <!-- /.contact-page__info__title -->
-                                            <a href="tel:+9156980036420" class="contact-page__info__link">+91 7338997288</a>
-                                            <!-- /.contact-page__info__link -->
-                                        </div><!-- /.contact-page__info__content -->
-                                    </div><!-- /.contact-page__info__item -->
-                                    <div class="contact-page__info__item">
-                                        <span class="contact-page__info__icon">
-                                            <i class="icon-paper-plane"></i>
-                                        </span><!-- /.contact-page__info__icon -->
-                                        <div class="contact-page__info__content">
-                                            <h4 class="contact-page__info__title">email</h4>
-                                            <!-- /.contact-page__info__title -->
-                                            <a href="mailto:needhelp@company.com" class="contact-page__info__link">medical.orangeacademy@gmail.com</a>
-                                            <!-- /.contact-page__info__link -->
-                                        </div><!-- /.contact-page__info__content -->
-                                    </div><!-- /.contact-page__info__item -->
-                                    <div class="contact-page__info__item">
-                                        <span class="contact-page__info__icon">
-                                            <i class="icon-location"></i>
-                                        </span><!-- /.contact-page__info__icon -->
-                                        <div class="contact-page__info__content">
-                                            <h4 class="contact-page__info__title">address</h4>
-                                            <!-- /.contact-page__info__title -->
-                                            <a href="https://www.google.com/maps" class="contact-page__info__link">Highpowerv Towers,<br> 61, 5th Cross St, Logaiah Colony,<br> Saligramam, Chennai,<br> Tamil Nadu 600093</a><!-- /.contact-page__info__link -->
-                                        </div><!-- /.contact-page__info__content -->
-                                    </div><!-- /.contact-page__info__item -->
-                                </div><!-- /.contact-page__info__inner -->
-                            </div><!-- /.contact-page__info -->
-                        </div><!-- /.col-xl-5 col-lg-6 -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
-                <img src="assets/images/shapes/contact-shape-1-1.png" alt="shape" class="contact-page__shape">
-            </div><!-- /.contact-page__inner section-space -->
-        </section><!-- /.contact-page section-space-top -->
+            <br><br>
+            <div class="container">
+                <div class="row gutter-y-40 align-items-center">
+                    <div class="col-xl-7 col-lg-6 order-1 order-lg-0 wow fadeInUp" data-wow-duration="1500ms">
+                        <div class="contact-page__form">
+                            <!-- Action points to the new PHP script -->
+                            <form id="contactForm" action="sendContact.php" method="POST" class="contact-form-validated form-one">
+                                <div class="form-one__group">
+                                    <div class="form-one__control form-one__control--full">
+                                        <input type="text" name="name" id="name" placeholder="Full Name" required>
+                                    </div>
+                                    <div class="form-one__control form-one__control--full">
+                                        <input type="email" name="email" id="email" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="form-one__control form-one__control--full">
+                                        <input type="tel" name="mobile" id="mobile" placeholder="Phone Number (10 digits)" required pattern="[0-9]{10}">
+                                    </div>
+                                    <div class="form-one__control form-one__control--full">
+                                        <textarea name="message" id="message" placeholder="Message" required></textarea>
+                                    </div>
+                                    <div class="form-one__control form-one__control--full">
+                                        <button type="submit" class="mediox-btn">
+                                            <span>Submit</span>
+                                            <span class="mediox-btn__icon"><i class="icon-up-right-arrow"></i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="result">
+                                <!-- Result will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-6 order-0 order-lg-1">
+                        <div class="contact-page__info">
+                            <div class="sec-title wow fadeInUp" data-wow-duration="1500ms">
+                                <div class="sec-title__top">
+                                    <h6 class="sec-title__tagline">Contact Us</h6><!-- /.sec-title__tagline -->
+                                </div><!-- /.sec-title__top -->
+                                <h3 class="sec-title__title">Just Say <span>Hello!</span></h3><!-- /.sec-title__title -->
+                            </div><!-- /.sec-title -->
+                            <div class="contact-page__info__inner wow fadeInUp" data-wow-duration="1500ms">
+                                <div class="contact-page__info__item">
+                                    <span class="contact-page__info__icon">
+                                        <i class="icon-telephone-2"></i>
+                                    </span>
+                                    <div class="contact-page__info__content">
+                                        <h4 class="contact-page__info__title">Call Now</h4>
+                                        <a href="tel:+917338997288" class="contact-page__info__link">+91 7338997288</a>
+                                    </div>
+                                </div>
+                                <div class="contact-page__info__item">
+                                    <span class="contact-page__info__icon">
+                                        <i class="icon-paper-plane"></i>
+                                    </span>
+                                    <div class="contact-page__info__content">
+                                        <h4 class="contact-page__info__title">Email</h4>
+                                        <a href="mailto:medical.orangeacademy@gmail.com" class="contact-page__info__link">medical.orangeacademy@gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="contact-page__info__item">
+                                    <span class="contact-page__info__icon">
+                                        <i class="icon-location"></i>
+                                    </span>
+                                    <div class="contact-page__info__content">
+                                        <h4 class="contact-page__info__title">Address</h4>
+                                        <a href="https://www.google.com/maps" class="contact-page__info__link">Highpowerv Towers,<br> 61, 5th Cross St, Logaiah Colony,<br> Saligramam, Chennai,<br> Tamil Nadu 600093</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+            <img src="assets/images/shapes/contact-shape-1-1.png" alt="shape" class="contact-page__shape">
+        </div><!-- /.contact-page__inner section-space -->
+    </section><!-- /.contact-page section-space-top -->
+    
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent form submission to reload the page
+    
+            var formData = new FormData(this);
+    
+            // Send the form data using fetch API
+            fetch("sendContact.php", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                let resultDiv = document.querySelector('.result');
+                if (data.status === "success") {
+                    // Clear the form fields
+                    this.reset(); 
+                    resultDiv.innerHTML = "<p style='color:green;'>Your message has been sent successfully!</p>";
+                } else {
+                    resultDiv.innerHTML = "<p style='color:red;'>" + data.message + "</p>";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                let resultDiv = document.querySelector('.result');
+                resultDiv.innerHTML = "<p style='color:red;'>An error occurred while sending your message.</p>";
+            });
+        });
+    </script>
+    
+    
 
 
         <footer class="main-footer section-space-top">
