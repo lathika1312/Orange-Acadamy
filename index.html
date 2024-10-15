@@ -117,7 +117,7 @@
                          /.main-header__call -->
                         <!-- Button to trigger the popup -->
                        <!-- Book Demo Button -->
-                       <a href="login.html" class="mediox-btn main-header__btn" id="loginBtn">
+                       <a href="https://fx8aha9n.knorish.com/" class="mediox-btn main-header__btn" id="loginBtn">
                         <span>Login/Register</span>
                         <span class="mediox-btn__icon"><i class="icon-up-right-arrow"></i></span>
                       </a>
@@ -292,8 +292,17 @@ function handleFormSubmit(event) {
     const toastrContainer = document.querySelector('.toastr-container');
     const toastr = document.createElement('div');
     toastr.className = `toastr toastr-success`;
-    toastr.innerHTML = `<span class="toastr-message">Thank you for submitting the form!</span>`;
-    toastrContainer.appendChild(toastr);
+       toastr.innerHTML = `<span class="toastr-message">Thank you for submitting the form!</span>`;
+                toastrContainer.appendChild(toastr);
+
+                // Auto-hide the toast after 3 seconds
+                setTimeout(() => {
+                    toastr.remove();
+                }, 3000);
+
+
+    
+
 
     xhr.onload = function() {
         if (xhr.status === 200) {
@@ -1784,8 +1793,8 @@ function handleFormSubmit(event) {
                                 <li><a href="courses.html">Our Courses</a></li>
                                 <li><a href="faq.html">Help & FAQS</a></li>
                                 <li><a href="contact.html">Contact Us</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="register.html">Register</a></li>               
+                                <li><a href="https://fx8aha9n.knorish.com/">Login</a></li>
+                                <li><a href="https://fx8aha9n.knorish.com/">Register</a></li>               
                             </ul>
                             <!-- /.list-unstyled footer-widget__links -->
                         </div>

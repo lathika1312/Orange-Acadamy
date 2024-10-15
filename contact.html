@@ -114,7 +114,7 @@
                          /.main-header__call -->
                         <!-- Button to trigger the popup -->
                        <!-- Book Demo Button -->
-                       <a href="login.html" class="mediox-btn main-header__btn" id="loginBtn">
+                       <a href="https://fx8aha9n.knorish.com/" class="mediox-btn main-header__btn" id="loginBtn">
                         <span>Login/Register</span>
                         <span class="mediox-btn__icon"><i class="icon-up-right-arrow"></i></span>
                       </a>  
@@ -289,8 +289,14 @@ function handleFormSubmit(event) {
     const toastrContainer = document.querySelector('.toastr-container');
     const toastr = document.createElement('div');
     toastr.className = `toastr toastr-success`;
-    toastr.innerHTML = `<span class="toastr-message">Thank you for submitting the form!</span>`;
-    toastrContainer.appendChild(toastr);
+       toastr.innerHTML = `<span class="toastr-message">Thank you for submitting the form!</span>`;
+                toastrContainer.appendChild(toastr);
+
+                // Auto-hide the toast after 3 seconds
+                setTimeout(() => {
+                    toastr.remove();
+                }, 3000);
+
 
     xhr.onload = function() {
         if (xhr.status === 200) {
@@ -448,7 +454,45 @@ function handleFormSubmit(event) {
     </header>
     <!-- /.main-header -->
     <!-- /.main-header -->
+    <div class="toastr-container"></div>
+    <style>
+        .toastr-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
 
+.toastr {
+    background-color: #64db86; /* Toast background color */
+    color: #000;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    position: relative;
+    animation: slide-in 0.5s ease-in-out; /* Animation for smooth appearance */
+}
+
+.toastr-success {
+    background-color: #64db86; /* Success toast background color */
+}
+
+.toastr-error {
+    background-color: #ff3b3f; /* Error toast background color */
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+    </style>
     <section class="contact-page section-space-top">
         <div class="contact-page__inner section-space">
             <center><h2 class="page-header__title">Contact us</h2></center>
@@ -532,35 +576,47 @@ function handleFormSubmit(event) {
     
     <script>
         document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();  // Prevent form submission to reload the page
-    
-            var formData = new FormData(this);
-    
-            // Send the form data using fetch API
-            fetch("sendContact.php", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "Accept": "application/json"
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                let resultDiv = document.querySelector('.result');
-                if (data.status === "success") {
-                    // Clear the form fields
-                    this.reset(); 
-                    resultDiv.innerHTML = "<p style='color:green;'>Your message has been sent successfully!</p>";
-                } else {
-                    resultDiv.innerHTML = "<p style='color:red;'>" + data.message + "</p>";
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                let resultDiv = document.querySelector('.result');
-                resultDiv.innerHTML = "<p style='color:red;'>An error occurred while sending your message.</p>";
-            });
-        });
+    event.preventDefault();  // Prevent form submission to reload the page
+
+    var formData = new FormData(this);
+
+    // Send the form data using fetch API
+    fetch("sendContact.php", {
+    method: "POST",
+    body: formData,
+    headers: {
+        "Accept": "text/html"
+    }
+})
+.then(response => response.text())
+.then(message => {
+    if (message.indexOf("success") !== -1) {
+        // Clear the form fields
+        this.reset(); 
+        showToast("Your message has been sent successfully!", "success");
+    } else {
+        showToast("An error occurred while sending your message.", "error");
+    }
+})
+.catch(error => {
+    console.error("Error:", error);
+    showToast("An error occurred while sending your message.", "error");
+});
+});
+
+// Function to show toastr notifications
+function showToast(message, type) {
+    const toastrContainer = document.querySelector('.toastr-container');
+    const toastr = document.createElement('div');
+    toastr.className = `toastr toastr-${type}`;
+    toastr.innerHTML = `<span class="toastr-message">${message}</span>`;
+    toastrContainer.appendChild(toastr);
+
+    // Auto-hide the toastr after 3 seconds
+    setTimeout(() => {
+        toastr.remove();
+    }, 3000);
+}
     </script>
     
     
@@ -634,8 +690,8 @@ function handleFormSubmit(event) {
                                 <li><a href="courses.html">Our Courses</a></li>
                                 <li><a href="faq.html">Help & FAQS</a></li>
                                 <li><a href="contact.html">Contact Us</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="register.html">Register</a></li>
+                                <li><a href="https://fx8aha9n.knorish.com/">Login</a></li>
+                                <li><a href="https://fx8aha9n.knorish.com/">Register</a></li>
                             </ul>
                             <!-- /.list-unstyled footer-widget__links -->
                         </div>

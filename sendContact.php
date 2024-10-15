@@ -49,21 +49,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                              "Message: " . $message . "<br>"; // Fixed: added a period before this line
 
             if ($mail->send()) {
-                // Send a success response in JSON
-                echo json_encode(['status' => 'success', 'message' => 'Email sent successfully!']);
+                // Send a success message
+                echo "Email sent successfully!";
             } else {
-                // Send failure response in JSON
-                echo json_encode(['status' => 'error', 'message' => 'Email sending failed.']);
+                // Send failure message
+                echo "Email sending failed.";
             }
         } catch (Exception $e) {
-            // Send detailed error in response
-            echo json_encode(['status' => 'error', 'message' => 'Mailer Error: ' . $mail->ErrorInfo]);
+            // Send detailed error message
+            echo "Mailer Error: " . $mail->ErrorInfo;
         }
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Invalid input. Please check your details.']);
+        echo "Invalid input. Please check your details.";
     }
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Invalid request method.']);
+    echo "Invalid request method.";
 }
 ?>
-
