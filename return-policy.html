@@ -129,30 +129,135 @@
                       
                       
                       <!-- Book Demo Modal -->
-                      <div id="demoModal" class="modal">
-                        <div class="modal-wrapper">
-                          <div class="demo-modal-content2"> 
-                            <span class="close">&times;</span>
-                            <h2 id="modalTitle"><b>Book A Demo</b></h2>
-                            <form id="demoForm" action="https://api.web3forms.com/submit" method="POST">
-                              <input type="hidden" name="access_key" value="9a0b3772-13d0-44db-a4b2-60f159ad88e6">
-                              <label for="name">Name:</label>
-                              <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                      
-                              <label for="email">Email:</label>
-                              <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                      
-                              <label for="mobile">Mobile:</label>
-                              <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" pattern="[0-9]{10}" required>
-                      
-                              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                      
-                              <button type="submit" class="submit-btn"><b>Submit</b></button>
-                              <div id="submitted-message" style="display: none; color: green; font-size: 16px; margin-top: 10px;"></div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
+<div id="demoModal" class="modal">
+    <div class="modal-wrapper">
+        <div class="demo-modal-content2"> 
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"><b>Book A Demo</b></h2>
+            <form id="demoForm" onsubmit="handleFormSubmit(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                <span class="error" id="name-error" style="color: red; display: none;">Please enter your name.</span>
+  
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <span class="error" id="email-error" style="color: red; display: none;">Please enter a valid email address.</span>
+  
+                <label for="mobile">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" pattern="[0-9]{10}" required>
+                <span class="error" id="mobile-error" style="color: red; display: none;">Please enter a valid 10-digit mobile number.</span>
+  
+                <button type="submit" class="submit-btn"><b>Submit</b></button>
+            </form>
+            <div id="submitted-message" style="display: none; color: green; font-size: 16px; margin-top: 10px;">Form submitted successfully!</div>
+        </div>
+    </div>
+</div>
+
+  
+  <script>
+    // Close modal when clicking on the close button
+    document.querySelector('.close').onclick = function() {
+      document.getElementById('demoModal').style.display = 'none';
+    };
+  
+    // Validate form fields
+    function validateForm() {
+      let isValid = true;
+  
+      // Get form field values
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+  
+      // Get error elements
+      const nameError = document.getElementById('name-error');
+      const emailError = document.getElementById('email-error');
+      const mobileError = document.getElementById('mobile-error');
+  
+      // Name validation
+      if (name === '') {
+        nameError.style.display = 'block';
+        isValid = false;
+      } else {
+        nameError.style.display = 'none';
+      }
+  
+      // Email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        emailError.style.display = 'block';
+        isValid = false;
+      } else {
+        emailError.style.display = 'none';
+      }
+  
+      // Mobile number validation (10 digits)
+      const mobilePattern = /^[0-9]{10}$/;
+      if (!mobilePattern.test(mobile)) {
+        mobileError.style.display = 'block';
+        isValid = false;
+      } else {
+        mobileError.style.display = 'none';
+      }
+  
+      return isValid;
+    }
+  
+    // Handle form submission
+    function handleFormSubmit(event) {
+        // Prevent the form from submitting
+        event.preventDefault(); 
+
+        // Validate form fields
+        if (!validateForm()) {
+        return false; // Stop form submission if validation fails
+        }
+
+        // If validation passes, show success message and hide form
+        const form = document.getElementById('demoForm');
+        const successMessage = document.getElementById('submitted-message');
+
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+        const mobile = document.getElementById('mobile').value;
+
+        // Creating an AJAX request
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/MedicalCoding/sendMail.php', true);
+
+        // Ensure that the request is properly encoded as form data
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // Handling the response
+        xhr.onload = function() {
+        if (xhr.status === 200) {
+            try {
+            // Parse the JSON response
+            const response = JSON.parse(xhr.responseText);
+
+            // Check if email was sent successfully
+            if (response.status === 'success') {
+                alert(response.message); // Show success message
+                form.style.display = 'none'; // Hide the form
+                successMessage.style.display = 'block'; // Show the success message
+            } else {
+                alert('Failed to send email: ' + response.message);
+            }
+            } catch (error) {
+            alert('An unexpected error occurred.');
+            console.error('Error parsing JSON response:', error);
+            }
+        } else {
+            alert('Failed to send email. Server returned status: ' + xhr.status);
+        }
+        };
+
+        // Sending the request with form data
+        xhr.send(`email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&mobile=${encodeURIComponent(mobile)}`);
+
+    }
+  </script>
                       
                       <!-- Simplified Modal CSS -->
                       <style>
