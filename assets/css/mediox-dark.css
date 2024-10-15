@@ -1,0 +1,300 @@
+:root {
+  --mediox-black: #FFFFFF;
+  --mediox-black-rgb: 255, 255, 255;
+  --mediox-black2: #ECF0F5;
+  --mediox-black2-rgb: 236, 240, 245;
+  --mediox-white: #0A2241;
+  --mediox-white-rgb: 10, 34, 65;
+  --mediox-white2: #0A2241;
+  --mediox-white2-rgb: 10, 34, 65;
+  --mediox-white3: #FFFFFF;
+  --mediox-white3-rgb: 255, 255, 255;
+}
+
+.preloader,
+.topbar-one,
+.sticky-header--cloned.main-header--four,
+.search-popup__form .mediox-btn::before,
+.search-popup__form .mediox-btn::after,
+.sidebar-one__content,
+.mobile-nav__content,
+.services-three__item,
+.service-card-two::after,
+.faq-accordion .accordion-title__icon,
+.main-footer {
+  background-color: var(--mediox-white);
+}
+
+.demo-one__btn::before,
+.demo-one__btn::after,
+.main-header--four .main-header__btn::before,
+.main-header--four .main-header__btn::after,
+.main-header--four .main-header__sidebar-btn span,
+.search-popup__form input[type=search],
+.search-popup__form input[type=text],
+.main-header--four .mobile-nav__btn span,
+.mobile-nav__content .main-menu__list li a button.expanded,
+.sidebar-one .social-links a:hover,
+.sidebar-one__newsletter__btn:hover,
+.main-slider-three__button--1 .mediox-btn::before,
+.main-slider-three__button--1 .mediox-btn::after,
+.main-slider-three__carousel-counter,
+.mediox-owl__carousel--basic-nav.owl-carousel .owl-nav button,
+.about-three__info,
+.video-btn-two,
+.service-card-two__bg,
+.services-two--home3 .services-two__carousel.owl-carousel .owl-nav button,
+.why-choose-one__image__two,
+.why-choose-one__item:hover .why-choose-one__item__icon::after,
+.faq-accordion .accordion,
+.faq-accordion .active.accordion,
+.faq-accordion .accordion-title,
+.faq-accordion .accordion-title__icon::after,
+.faq-accordion .accordion-title__icon::before,
+.faq-accordion .active .accordion-title__icon::after,
+.faq-accordion .active .accordion-title__icon::before,
+.faq-two__shape,
+.work-process-one__item__icon,
+.team-three__custome-navs button,
+.team-card-three__identity,
+.team-card-three .social-links a,
+.appointment-one__form input[type=text],
+.appointment-one__form input[type=email],
+.appointment-one__form input[type=tel],
+.appointment-one__form textarea,
+.appointment-one__form .mediox-btn::before,
+.appointment-one__form .mediox-btn::after,
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next,
+.ui-datepicker.ui-widget-content,
+.ui-datepicker-calendar td,
+.testimonials-three__card,
+.blog-three__custome-navs button,
+.blog-card-two__date,
+.blog-card-two__date__month,
+.footer-widget__title::before,
+.main-footer__contact__icon {
+  background-color: var(--mediox-black);
+}
+
+.appointment-one__form .bootstrap-select > .dropdown-toggle {
+  background-color: var(--mediox-black) !important;
+}
+
+.main-header__call__icon,
+.form-one .bootstrap-select .dropdown-menu > li > a,
+.ui-datepicker-calendar .ui-state-default,
+.ui-datepicker-calendar .ui-widget-content .ui-state-default,
+.ui-datepicker-calendar .ui-widget-header .ui-state-default,
+.blog-card-two--home3 {
+  background-color: var(--mediox-black2);
+}
+
+.demo-one__btns {
+  background-color: rgba(var(--mediox-white-rgb), 0.7);
+}
+
+.main-header--four .main-header__search::before {
+  background-color: rgba(var(--mediox-black-rgb), 0.4);
+}
+
+.main-header--four .main-header__logo::before,
+.main-header--four .main-header__call::before {
+  background-color: rgba(var(--mediox-black-rgb), 0.2);
+}
+
+.sidebar-one__newsletter__input {
+  background-color: rgba(var(--mediox-black-rgb), 0.1);
+}
+
+.funfact-one--home3 .funfact-one__item::after,
+.funfact-one--home3 .funfact-one__inner::after {
+  background-color: rgba(var(--mediox-border-color-rgb), 0.2);
+}
+
+.why-choose-one__shape::before,
+.why-choose-one__shape::after {
+  background-color: rgba(var(--mediox-base-rgb), 0.5);
+}
+
+.main-header--four .mobile-nav__btn:hover span {
+  background-color: var(--mediox-base);
+}
+
+.portfolio-card__hover__box {
+  background-color: rgba(var(--mediox-white-rgb), 0.8);
+}
+
+@media (max-width: 1199px) {
+  .service-card-two__link:hover {
+    background-color: var(--mediox-black);
+  }
+}
+.services-three__bg {
+  mix-blend-mode: overlay;
+  opacity: 0.2;
+}
+
+.client-carousel__one__item:hover img {
+  mix-blend-mode: normal;
+}
+
+.appointment-one__bg__inner {
+  display: none;
+}
+
+.appointment-one__bg::after {
+  background: linear-gradient(100.77deg, rgba(11, 34, 65, 0.95) 30.23%, rgba(44, 81, 163, 0) 100%);
+}
+
+.main-header--four,
+.footer-widget__btn {
+  border-color: rgba(var(--mediox-black-rgb), 0.2);
+}
+
+.mobile-nav__content .main-menu__list li:not(:last-child) {
+  border-color: rgba(var(--mediox-black-rgb), 0.1);
+}
+
+.main-slider-three__button--2 .mediox-btn,
+.mediox-owl__carousel--basic-nav.owl-carousel .owl-nav button,
+.video-btn-two > span,
+.services-two--home3 .services-two__carousel.owl-carousel .owl-nav button,
+.team-three__custome-navs button,
+.blog-three__custome-navs button {
+  border-color: var(--mediox-black);
+}
+
+.services-three__top,
+.why-choose-one__item + .why-choose-one__item {
+  border-color: rgba(var(--mediox-border-color-rgb), 0.2);
+}
+
+.main-footer__contact__icon::after {
+  border-color: rgba(var(--mediox-black-rgb), 0.15);
+}
+
+.main-footer__contact:hover .main-footer__contact__icon::after {
+  border-color: var(--mediox-black);
+}
+
+.sidebar-one__newsletter__btn:hover,
+.mediox-btn:hover,
+.mediox-btn:hover .mediox-btn__icon,
+.why-choose-one__item:hover .why-choose-one__item__icon {
+  color: var(--mediox-base);
+}
+
+.mediox-btn,
+.mediox-btn__icon,
+.topbar-one__info li,
+.social-links a:hover,
+.main-header--four .main-menu .main-menu__list > li > a,
+.main-header--four .main-header__cart,
+.main-header--four .main-header__search,
+.main-header__call:hover .main-header__call__icon,
+.main-header--four .main-header__call__title,
+.main-header--four .main-header__call__number,
+.main-menu .main-menu__list li ul li.current > a,
+.main-menu .main-menu__list li ul li:hover > a,
+.main-menu .main-menu__list li ul li.current > a::after,
+.main-menu .main-menu__list li ul li:hover > a::after,
+.sidebar-one__close,
+.sidebar-one__title,
+.sidebar-one .social-links a,
+.sidebar-one__newsletter__btn,
+.sidebar-one__newsletter__input:focus,
+.mobile-nav__close,
+.mobile-nav__content .main-menu__list li > a,
+.mobile-nav__content .main-menu__list li a button,
+.mobile-nav__contact__icon,
+.mobile-nav__contact li,
+.search-popup__form .mediox-btn:hover,
+.main-slider-three__title,
+.main-slider-three__button--2 .mediox-btn:hover,
+.main-slider-three__button--2 .mediox-btn:hover .mediox-btn__icon,
+.mediox-owl__carousel--basic-nav.owl-carousel .owl-nav button:hover,
+.main-slider-three__slick-button,
+.main-slider-three__slick-button:hover,
+.about-three__text,
+.video-btn-two:hover,
+.services-three__item__title,
+.services-two--home3 .services-two__carousel.owl-carousel .owl-nav button:hover,
+.why-choose-one__item__icon,
+.faq-two .sec-title__tagline,
+.faq-two .sec-title__title,
+.work-process-one--home3 .sec-title__title,
+.work-process-one__item:hover .work-process-one__item__icon,
+.work-process-one__item__number::after,
+.work-process-one--home3 .work-process-one__item__title,
+.work-process-one--home3 .work-process-one__item__text,
+.team-three__custome-navs button:hover,
+.team-card-three:hover .team-card-three__name,
+.team-card-three:hover .team-card-three__designation,
+.team-card-three .social-links a:hover,
+.appointment-one__title,
+.form-one .bootstrap-select .dropdown-menu > li:hover > a,
+.form-one .bootstrap-select .dropdown-menu > li.selected > a,
+.ui-datepicker .ui-datepicker-header,
+.ui-datepicker-calendar .ui-state-default:hover,
+.ui-datepicker-calendar .ui-widget-content .ui-state-default:hover,
+.ui-datepicker-calendar .ui-widget-header .ui-state-default:hover,
+.portfolio-card__btn__icon,
+.portfolio-card--two .portfolio-card__category:hover,
+.portfolio-card__title,
+.testimonial-card-three .mediox-ratings__icon,
+.blog-three__custome-navs button:hover,
+.blog-card-two--home3 .blog-card-two__btn:hover,
+.blog-card-two__date__day,
+.footer-widget__title,
+.footer-widget__btn:hover,
+.footer-widget__btn:hover .footer-widget__btn__icon,
+.footer-widget__posts__title,
+.main-footer__contact:hover .main-footer__contact__icon,
+.main-footer__contact__title,
+.main-footer__contact__text {
+  color: var(--mediox-black);
+}
+
+.search-popup__form input[type=search]:focus,
+.search-popup__form input[type=text]:focus,
+.mobile-nav__content .main-menu__list li a button.expanded,
+.mediox-owl__carousel--basic-nav.owl-carousel .owl-nav button,
+.about-profile__name,
+.service-card-two__title,
+.faq-accordion .accordion-title h4,
+.team-three__custome-navs button,
+.team-card-three__name,
+.form-one input[type=text]:focus,
+.form-one input[type=email]:focus,
+.form-one input[type=tel]:focus,
+.form-one textarea:focus,
+.form-one .bootstrap-select .dropdown-menu > li > a,
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next,
+.ui-datepicker-calendar .ui-state-default,
+.ui-datepicker-calendar .ui-widget-content .ui-state-default,
+.ui-datepicker-calendar .ui-widget-header .ui-state-default,
+.testimonial-card-three__name,
+.blog-three__custome-navs button,
+.blog-card-two__title,
+.blog-card-two__date__month,
+.main-footer__contact__text:hover {
+  color: var(--mediox-white);
+}
+
+@media (max-width: 1199px) {
+  .service-card-two__title,
+  .service-card-two__link {
+    color: var(--mediox-black);
+  }
+  .service-card-two__link:hover {
+    color: var(--mediox-base);
+  }
+}
+@media (min-width: 1200px) {
+  .service-card-two:hover .service-card-two__link {
+    color: var(--mediox-black);
+  }
+}
+/*# sourceMappingURL=mediox-dark.css.map */

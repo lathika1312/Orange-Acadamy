@@ -1,0 +1,195 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoondbd6.eot?e78ee9');
+  src:  url('fonts/icomoondbd6.eot?e78ee9#iefix') format('embedded-opentype'),
+    url('fonts/icomoondbd6.ttf?e78ee9') format('truetype'),
+    url('fonts/icomoondbd6.woff?e78ee9') format('woff'),
+    url('fonts/icomoondbd6.svg?e78ee9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-double-arrow:before {
+  content: "\e915";
+}
+.icon-rating-rate:before {
+  content: "\e914";
+}
+.icon-assessment:before {
+  content: "\e911";
+}
+.icon-handshake:before {
+  content: "\e912";
+}
+.icon-play:before {
+  content: "\e910";
+}
+.icon-download:before {
+  content: "\e90e";
+}
+.icon-ambulance:before {
+  content: "\e95c";
+}
+.icon-womb:before {
+  content: "\e95d";
+}
+.icon-caret-down:before {
+  content: "\e95b";
+}
+.icon-arrow-left:before {
+  content: "\e949";
+}
+.icon-arrow-right:before {
+  content: "\e94a";
+}
+.icon-quote-2:before {
+  content: "\e95a";
+}
+.icon-arrow-left-2:before {
+  content: "\e957";
+}
+.icon-arrow-right-2:before {
+  content: "\e958";
+}
+.icon-close:before {
+  content: "\e956";
+}
+.icon-arrow-point-to-right:before {
+  content: "\e94b";
+}
+.icon-cart:before {
+  content: "\e94c";
+}
+.icon-comments:before {
+  content: "\e94d";
+}
+.icon-email:before {
+  content: "\e94e";
+}
+.icon-home:before {
+  content: "\e94f";
+}
+.icon-location:before {
+  content: "\e950";
+}
+.icon-paper-plane:before {
+  content: "\e951";
+}
+.icon-search:before {
+  content: "\e952";
+}
+.icon-speech-bubble:before {
+  content: "\e953";
+}
+.icon-telephone-2:before {
+  content: "\e954";
+}
+.icon-user:before {
+  content: "\e955";
+}
+.icon-star:before {
+  content: "\e947";
+}
+.icon-up-right-arrow:before {
+  content: "\e948";
+}
+.icon-7:before {
+  content: "\e900";
+}
+.icon-hours:before {
+  content: "\e901";
+}
+.icon-bone:before {
+  content: "\e902";
+}
+.icon-brain:before {
+  content: "\e903";
+}
+.icon-brain-1:before {
+  content: "\e904";
+}
+.icon-cardiology:before {
+  content: "\e905";
+}
+.icon-check:before {
+  content: "\e906";
+}
+.icon-clinic:before {
+  content: "\e907";
+}
+.icon-consultation:before {
+  content: "\e908";
+}
+.icon-dental-chair:before {
+  content: "\e909";
+}
+.icon-doctor:before {
+  content: "\e90a";
+}
+.icon-doctor-1:before {
+  content: "\e90b";
+}
+.icon-doctor-2:before {
+  content: "\e90c";
+}
+.icon-doctor-3:before {
+  content: "\e90d";
+}
+.icon-instagram:before {
+  content: "\e922";
+}
+.icon-level:before {
+  content: "\e923";
+}
+.icon-medical:before {
+  content: "\e924";
+}
+.icon-medicine:before {
+  content: "\e933";
+}
+.icon-nurse:before {
+  content: "\e934";
+}
+.icon-patient:before {
+  content: "\e935";
+}
+.icon-personalized:before {
+  content: "\e936";
+}
+.icon-telephone:before {
+  content: "\e937";
+}
+.icon-tooth:before {
+  content: "\e938";
+}
+.icon-tooth-1:before {
+  content: "\e939";
+}
+.icon-arrow-right-3:before {
+  content: "\e959";
+}
+.icon-check-box:before {
+  content: "\e90f";
+}
+.icon-quote:before {
+  content: "\e913";
+}
+.icon-up-right-arrow-2:before {
+  content: "\e916";
+}
