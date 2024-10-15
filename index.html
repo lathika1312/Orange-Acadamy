@@ -285,7 +285,7 @@ function handleFormSubmit(event) {
     const mobile = document.getElementById('mobile').value;
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/MedicalCoding/sendMail.php', true);
+    xhr.open('POST', 'sendMail.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     // Show success toast instantly
