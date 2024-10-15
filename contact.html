@@ -123,213 +123,273 @@
                         <span>Book A Demo</span>
                         <span class="mediox-btn__icon"><i class="icon-up-right-arrow"></i></span>
                       </a>
-                      
-                      
-                      <!-- Book Demo Modal -->
-<div id="demoModal" class="modal">
-    <div class="modal-wrapper">
-        <div class="demo-modal-content2"> 
-            <span class="close">&times;</span>
-            <h2 id="modalTitle"><b>Book A Demo</b></h2>
-            <form id="demoForm" onsubmit="handleFormSubmit(event)">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                <span class="error" id="name-error" style="color: red; display: none;">Please enter your name.</span>
-  
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                <span class="error" id="email-error" style="color: red; display: none;">Please enter a valid email address.</span>
-  
-                <label for="mobile">Mobile:</label>
-                <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" pattern="[0-9]{10}" required>
-                <span class="error" id="mobile-error" style="color: red; display: none;">Please enter a valid 10-digit mobile number.</span>
-  
-                <button type="submit" class="submit-btn"><b>Submit</b></button>
-            </form>
-            <div id="submitted-message" style="display: none; color: green; font-size: 16px; margin-top: 10px;">Form submitted successfully!</div>
-        </div>
-    </div>
-</div>
+                    
+                    <!-- Book Demo Modal -->
+                    <div class="toastr-container"></div>
+                    
+                    <style>
+                        .toastr-container {
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            z-index: 1000;
+                        }
+                    
+                        .toastr {
+                                    background-color: #64db86; /* Toast background color */
+                                    color: #000;
+                                    padding: 16px;
+                                    border-radius: 10px;
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                                    margin-bottom: 10px;
+                                    position: relative;
+                                    animation: slide-in 0.5s ease-in-out; /* Animation for smooth appearance */
+                                }
 
-  
-  <script>
-    // Close modal when clicking on the close button
-    document.querySelector('.close').onclick = function() {
-      document.getElementById('demoModal').style.display = 'none';
-    };
-  
-    // Validate form fields
-    function validateForm() {
-      let isValid = true;
-  
-      // Get form field values
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const mobile = document.getElementById('mobile').value.trim();
-  
-      // Get error elements
-      const nameError = document.getElementById('name-error');
-      const emailError = document.getElementById('email-error');
-      const mobileError = document.getElementById('mobile-error');
-  
-      // Name validation
-      if (name === '') {
-        nameError.style.display = 'block';
-        isValid = false;
-      } else {
-        nameError.style.display = 'none';
-      }
-  
-      // Email validation
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        emailError.style.display = 'block';
-        isValid = false;
-      } else {
-        emailError.style.display = 'none';
-      }
-  
-      // Mobile number validation (10 digits)
-      const mobilePattern = /^[0-9]{10}$/;
-      if (!mobilePattern.test(mobile)) {
-        mobileError.style.display = 'block';
-        isValid = false;
-      } else {
-        mobileError.style.display = 'none';
-      }
-  
-      return isValid;
-    }
-  
-    // Handle form submission
-    function handleFormSubmit(event) {
-        // Prevent the form from submitting
-        event.preventDefault(); 
+                                @keyframes slide-in {
+                                    from {
+                                        transform: translateX(100%);
+                                        opacity: 0;
+                                    }
+                                    to {
+                                        transform: translateX(0);
+                                        opacity: 1;
+                                    }
+                                }
+                    
+                        @keyframes fade-out {
+                            from {
+                                opacity: 1;
+                            }
+                            to {
+                                opacity: 0;
+                            }
+                        }
+                    
+                        /* Optional: Add a different style for success and error toasts */
+                        .toastr-success {
+                            background-color: #64db86; /* Success color */
+                        }
+                    
+                        .toastr-error {
+                            background-color: #ff4d4d; /* Error color */
+                        }
+                    </style>
+                    
+                    <div id="demoModal" class="modal">
+                        <div class="modal-wrapper">
+                            <div class="demo-modal-content2">
+                                <span class="close">&times;</span>
+                                <h2 id="modalTitle"><b>Book A Demo</b></h2>
+                                <form id="demoForm" onsubmit="handleFormSubmit(event)">
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                                    <span class="error" id="name-error" style="color: red; display: none;">Please enter your name.</span>
+                    
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                                    <span class="error" id="email-error" style="color: red; display: none;">Please enter a valid email address.</span>
+                    
+                                    <label for="mobile">Mobile:</label>
+                                    <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" pattern="[0-9]{10}" required>
+                                    <span class="error" id="mobile-error" style="color: red; display: none;">Please enter a valid 10-digit mobile number.</span>
+                    
+                                    <button type="submit" class="submit-btn"><b>Submit</b></button>
+                                </form>
+                                <div id="submitted-message" style="display: none; color: green; font-size: 16px; margin-top: 10px;">Form submitted successfully!</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        // Close modal when clicking on the close button
+                        document.querySelector('.close').onclick = function() {
+                            document.getElementById('demoModal').style.display = 'none';
+                        };
+                    
+                        // Validate form fields
+                        function validateForm() {
+                            let isValid = true;
+                    
+                            // Get form field values
+                            const name = document.getElementById('name').value.trim();
+                            const email = document.getElementById('email').value.trim();
+                            const mobile = document.getElementById('mobile').value.trim();
+                    
+                            // Get error elements
+                            const nameError = document.getElementById('name-error');
+                            const emailError = document.getElementById('email-error');
+                            const mobileError = document.getElementById('mobile-error');
+                    
+                            // Name validation
+                            if (name === '') {
+                                nameError.style.display = 'block';
+                                isValid = false;
+                            } else {
+                                nameError.style.display = 'none';
+                            }
+                    
+                            // Email validation
+                            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            if (!emailPattern.test(email)) {
+                                emailError.style.display = 'block';
+                                isValid = false;
+                            } else {
+                                emailError.style.display = 'none';
+                            }
+                    
+                            // Mobile number validation (10 digits)
+                            const mobilePattern = /^[0-9]{10}$/;
+                            if (!mobilePattern.test(mobile)) {
+                                mobileError.style.display = 'block';
+                                isValid = false;
+                            } else {
+                                mobileError.style.display = 'none';
+                            }
+                    
+                            return isValid;
+                        }
+                    
+                        // Handle form submission
+                        // Function to show toastr notifications
+                            function showToast(message, type) {
+                                const toastrContainer = document.querySelector('.toastr-container');
+                                const toastr = document.createElement('div');
+                                toastr.className = `toastr toastr-${type}`;
+                                toastr.innerHTML = `<span class="toastr-message">${message}</span>`;
+                                toastrContainer.appendChild(toastr);
 
-        // Validate form fields
-        if (!validateForm()) {
+                                // Auto-hide the toastr after 3 seconds
+                                setTimeout(() => {
+                                    toastr.remove();
+                                }, 3000);
+                            }
+                    
+                        // Handle form submission
+                        // Handle form submission
+                        // Handle form submission
+// Handle form submission
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    if (!validateForm()) {
         return false; // Stop form submission if validation fails
-        }
+    }
 
-        // If validation passes, show success message and hide form
-        const form = document.getElementById('demoForm');
-        const successMessage = document.getElementById('submitted-message');
+    const form = document.getElementById('demoForm');
+    const email = document.getElementById('email').value;
+    const name = document.getElementById('name').value;
+    const mobile = document.getElementById('mobile').value;
 
-        const email = document.getElementById('email').value;
-        const name = document.getElementById('name').value;
-        const mobile = document.getElementById('mobile').value;
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/MedicalCoding/sendMail.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-        // Creating an AJAX request
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/MedicalCoding/sendMail.php', true);
+    // Show success toast instantly
+    const toastrContainer = document.querySelector('.toastr-container');
+    const toastr = document.createElement('div');
+    toastr.className = `toastr toastr-success`;
+    toastr.innerHTML = `<span class="toastr-message">Thank you for submitting the form!</span>`;
+    toastrContainer.appendChild(toastr);
 
-        // Ensure that the request is properly encoded as form data
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-        // Handling the response
-        xhr.onload = function() {
+    xhr.onload = function() {
         if (xhr.status === 200) {
             try {
-            // Parse the JSON response
-            const response = JSON.parse(xhr.responseText);
-
-            // Check if email was sent successfully
-            if (response.status === 'success') {
-                alert(response.message); // Show success message
-                form.style.display = 'none'; // Hide the form
-                successMessage.style.display = 'block'; // Show the success message
-            } else {
-                alert('Failed to send email: ' + response.message);
-            }
+                const response = JSON.parse(xhr.responseText);
+                if (response.status === 'success') {
+                    form.reset(); // Reset the form
+                    document.getElementById('demoModal').style.display = 'none'; // Close the modal
+                } else {
+                    toastr.remove();
+                    showToast('Failed to send email: ' + response.message, 'error'); // Show error toastr
+                }
             } catch (error) {
-            alert('An unexpected error occurred.');
-            console.error('Error parsing JSON response:', error);
+                toastr.remove();
+                showToast('An unexpected error occurred.', 'error'); // Show error toastr
+                console.error('Error parsing JSON response:', error);
             }
         } else {
-            alert('Failed to send email. Server returned status: ' + xhr.status);
+            toastr.remove();
+            showToast('Failed to send email. Server returned status: ' + xhr.status, 'error'); // Show error toastr
         }
-        };
+    };
 
-        // Sending the request with form data
-        xhr.send(`email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&mobile=${encodeURIComponent(mobile)}`);
-
-    }
-  </script>
-                      
-                      <!-- Simplified Modal CSS -->
-                      <style>
-                      /* Modal content */
-                      /* Modal content */
-                      /* Modal Wrapper */
-                      .modal-wrapper {
-                        display: flex;
-                        justify-content: center; /* Horizontally center */
-                        align-items: center; /* Vertically center */
-                        width: 100%;
-                        height: 100vh; /* Make sure the wrapper takes full screen height */
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        background-color: rgba(0, 0, 0, 0.5); /* Optional, to darken background */
-                        z-index: 1000; /* Make sure it's above other content */
-                      }
-                      
-                      /* Modal Content */
-                      .demo-modal-content2 {
-                        background-color: #fff;
-                        padding: 20px;
-                        border: 1px solid #888;
-                        width: 90%; /* For smaller screens */
-                        max-width: 400px; /* Maximum width */
-                        border-radius: 8px;
-                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-                        position: relative;
-                        text-align: left; /* Left align form content */
-                      }
-                      
-                      
-                      /* Form Styles */
-                      form {
-                        display: flex;
-                        flex-direction: column;
-                        width: 100%; /* Full width */
-                        text-align: left; /* Left align form elements */
-                      }
-                      
-                      label {
-                        margin-bottom: 5px;
-                        font-size: 16px;
-                        text-align: left; /* Ensure labels are left-aligned */
-                      }
-                      
-                      input[type="text"],
-                      input[type="email"],
-                      input[type="tel"] {
-                        padding: 10px;
-                        margin-bottom: 15px;
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                        width: 100%;
-                        box-sizing: border-box;
-                        text-align: left; /* Align text input to the left */
-                      }
-                      
-                      button.submit-btn {
-                        background-color: #ea6a00;
-                        color: white;
-                        padding: 10px;
-                        border: none;
-                        border-radius: 30px;
-                        cursor: pointer;
-                        font-size: 16px;
-                        width: 100%;
-                        text-align: center; /* Center align button text */
-                      }
-                      
-                      button.submit-btn:hover {
-                        background-color: #27375d;
-                      }
-                      </style>
+    xhr.send(`email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&mobile=${encodeURIComponent(mobile)}`);
+}
+                    </script>
+                    
+                    <!-- Simplified Modal CSS -->
+                    <style>
+                        /* Modal Wrapper */
+                        .modal-wrapper {
+                            display: flex;
+                            justify-content: center; /* Horizontally center */
+                            align-items: center; /* Vertically center */
+                            width: 100%;
+                            height: 100vh; /* Make sure the wrapper takes full screen height */
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            background-color: rgba(0, 0, 0, 0.5); /* Optional, to darken background */
+                            z-index: 1000; /* Make sure it's above other content */
+                        }
+                    
+                        /* Modal Content */
+                        .demo-modal-content2 {
+                            background-color: #fff;
+                            padding: 20px;
+                            border: 1px solid #888;
+                            width: 90%; /* For smaller screens */
+                            max-width: 400px; /* Maximum width */
+                            border-radius: 8px;
+                            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                            position: relative;
+                            text-align: left; /* Left align form content */
+                        }
+                    
+                        /* Form Styles */
+                        form {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%; /* Full width */
+                            text-align: left; /* Left align form elements */
+                        }
+                    
+                        label {
+                            margin-bottom: 5px;
+                            font-size: 16px;
+                            text-align: left; /* Ensure labels are left-aligned */
+                        }
+                    
+                        input[type="text"],
+                        input[type="email"],
+                        input[type="tel"] {
+                            padding: 10px;
+                            margin-bottom: 15px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                            width: 100%;
+                            box-sizing: border-box;
+                            text-align: left; /* Align text input to the left */
+                        }
+                    
+                        button.submit-btn {
+                            background-color: #ea6a00;
+                            color: white;
+                            padding: 10px;
+                            border: none;
+                            border-radius: 30px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            width: 100%;
+                            text-align: center; /* Center align button text */
+                        }
+                    
+                        button.submit-btn:hover {
+                            background-color: #27375d;
+                        }
+                    </style>
+                    
                       
                       <!-- Simplified JavaScript -->
                       
@@ -371,38 +431,7 @@
                         function showModal() {
                           modal.style .display = "block";
                         }
-                      
-                        // Add event listener to form submission
-                        // Add event listener to form submission
-// Add event listener to form submission
-document.getElementById("demoForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // Prevent default form submission behavior
-
-  const formData = new FormData(this);
-  fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      submittedMessage.textContent = "Form submitted successfully!";
-      submittedMessage.style.display = "block";
-      // You can also add a timeout to hide the message after a few seconds
-      setTimeout(function() {
-        submittedMessage.style.display = "none";
-      }, 3000);
-    })
-    .catch((error) => {
-      console.error(error);
-      submittedMessage.textContent = "Error submitting form!";
-      submittedMessage.style.display = "block";
-      // You can also add a timeout to hide the message after a few seconds
-      setTimeout(function() {
-        submittedMessage.style.display = "none";
-      }, 3000);
-    });
-});
+                
 
                       </script>
                   

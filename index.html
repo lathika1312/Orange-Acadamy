@@ -139,26 +139,26 @@
                         }
                     
                         .toastr {
-                            background-color: #64db86; /* Toast background color */
-                            color: #000;
-                            padding: 16px;
-                            border-radius: 10px;
-                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-                            margin-bottom: 10px;
-                            position: relative;
-                            animation: slide-in 0.5s ease-in-out, fade-out 0.5s 2.5s forwards; /* Animation for smooth appearance and disappearance */
-                        }
-                    
-                        @keyframes slide-in {
-                            from {
-                                transform: translateX(100%);
-                                opacity: 0;
-                            }
-                            to {
-                                transform: translateX(0);
-                                opacity: 1;
-                            }
-                        }
+                                    background-color: #64db86; /* Toast background color */
+                                    color: #000;
+                                    padding: 16px;
+                                    border-radius: 10px;
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                                    margin-bottom: 10px;
+                                    position: relative;
+                                    animation: slide-in 0.5s ease-in-out; /* Animation for smooth appearance */
+                                }
+
+                                @keyframes slide-in {
+                                    from {
+                                        transform: translateX(100%);
+                                        opacity: 0;
+                                    }
+                                    to {
+                                        transform: translateX(0);
+                                        opacity: 1;
+                                    }
+                                }
                     
                         @keyframes fade-out {
                             from {
@@ -254,59 +254,71 @@
                         }
                     
                         // Handle form submission
-                        function showToast(message, type) {
-                            const toastrContainer = document.querySelector('.toastr-container');
-                            const toastr = document.createElement('div');
-                            toastr.className = `toastr toastr-${type}`;
-                            toastr.innerHTML = `<span class="toastr-message">${message}</span>`;
-                            toastrContainer.appendChild(toastr);
-                    
-                            // Auto-hide the toastr after 3 seconds
-                            setTimeout(() => {
-                                toastr.remove();
-                            }, 3000);
-                        }
-                    
-                        // Handle form submission
-                        // Handle form submission
-                        function handleFormSubmit(event) {
-                            event.preventDefault();
+                        // Function to show toastr notifications
+                            function showToast(message, type) {
+                                const toastrContainer = document.querySelector('.toastr-container');
+                                const toastr = document.createElement('div');
+                                toastr.className = `toastr toastr-${type}`;
+                                toastr.innerHTML = `<span class="toastr-message">${message}</span>`;
+                                toastrContainer.appendChild(toastr);
 
-                            if (!validateForm()) {
-                                return false; // Stop form submission if validation fails
+                                // Auto-hide the toastr after 3 seconds
+                                setTimeout(() => {
+                                    toastr.remove();
+                                }, 3000);
                             }
+                    
+                        // Handle form submission
+                        // Handle form submission
+                        // Handle form submission
+// Handle form submission
+function handleFormSubmit(event) {
+    event.preventDefault();
 
-                            const form = document.getElementById('demoForm');
-                            const email = document.getElementById('email').value;
-                            const name = document.getElementById('name').value;
-                            const mobile = document.getElementById('mobile').value;
+    if (!validateForm()) {
+        return false; // Stop form submission if validation fails
+    }
 
-                            const xhr = new XMLHttpRequest();
-                            xhr.open('POST', '/MedicalCoding/sendMail.php', true);
-                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    const form = document.getElementById('demoForm');
+    const email = document.getElementById('email').value;
+    const name = document.getElementById('name').value;
+    const mobile = document.getElementById('mobile').value;
 
-                            xhr.onload = function() {
-                                if (xhr.status === 200) {
-                                    try {
-                                        const response = JSON.parse(xhr.responseText);
-                                        if (response.status === 'success') {
-                                            showToast(response.message, 'success'); // Show success toastr
-                                            form.reset(); // Reset the form
-                                            document.getElementById('demoModal').style.display = 'none'; // Close the modal
-                                        } else {
-                                            showToast('Failed to send email: ' + response.message, 'error'); // Show error toastr
-                                        }
-                                    } catch (error) {
-                                        showToast('An unexpected error occurred.', 'error'); // Show error toastr
-                                        console.error('Error parsing JSON response:', error);
-                                    }
-                                } else {
-                                    showToast('Failed to send email. Server returned status: ' + xhr.status, 'error'); // Show error toastr
-                                }
-                            };
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/MedicalCoding/sendMail.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-                            xhr.send(`email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&mobile=${encodeURIComponent(mobile)}`);
-                        }
+    // Show success toast instantly
+    const toastrContainer = document.querySelector('.toastr-container');
+    const toastr = document.createElement('div');
+    toastr.className = `toastr toastr-success`;
+    toastr.innerHTML = `<span class="toastr-message">Thank you for submitting the form!</span>`;
+    toastrContainer.appendChild(toastr);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            try {
+                const response = JSON.parse(xhr.responseText);
+                if (response.status === 'success') {
+                    form.reset(); // Reset the form
+                    document.getElementById('demoModal').style.display = 'none'; // Close the modal
+                } else {
+                    toastr.remove();
+                    showToast('Failed to send email: ' + response.message, 'error'); // Show error toastr
+                }
+            } catch (error) {
+                toastr.remove();
+                showToast('An unexpected error occurred.', 'error'); // Show error toastr
+                console.error('Error parsing JSON response:', error);
+            }
+        } else {
+            toastr.remove();
+            showToast('Failed to send email. Server returned status: ' + xhr.status, 'error'); // Show error toastr
+        }
+    };
+
+    xhr.send(`email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&mobile=${encodeURIComponent(mobile)}`);
+}
                     </script>
                     
                     <!-- Simplified Modal CSS -->
