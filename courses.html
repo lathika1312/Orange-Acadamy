@@ -741,13 +741,15 @@ function handleFormSubmit(event) {
                             Download Course Brochure
                           </h5>
                         </center>
+                        <div class="toastr-container">
+                          <!-- Toast notifications will be appended here -->
+                      </div>
                         <form
-                          action="https://www.henryharvin.com/admin/leadppc"
-                          method="POST"
-                          onsubmit="if (!window.__cfRLUnblockHandlers) return false; loader(document.getElementById('request-info'))"
-                          enctype="multipart/form-data"
-                          autocomplete="on"
-                          data-cf-modified-c29d7479f2df529710e1abff-=""
+                        action="downloadBrochure.php"
+                        method="POST"
+                        onsubmit="handleBrochureFormSubmit(event)"
+                        enctype="multipart/form-data"
+                        autocomplete="on"
                         >
                           <input
                             type="hidden"
@@ -1556,6 +1558,52 @@ function handleFormSubmit(event) {
               }
             }
           </style>
+          <script>
+            function handleBrochureFormSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const form = document.querySelector('#newform form');
+    const formData = new FormData(form); // Create a FormData object from the form
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'downloadBrochure.php', true);
+    
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            try {
+                const response = JSON.parse(xhr.responseText);
+                if (response.status === 'success') {
+                    showToast(response.message, 'success'); // Show success toast
+                    form.reset(); // Reset the form
+                } else {
+                    showToast('Error: ' + response.message, 'error'); // Show error toast
+                }
+            } catch (error) {
+                console.error('Error parsing JSON response:', error);
+                showToast('An unexpected error occurred.', 'error'); // Show error toast
+            }
+        } else {
+            showToast('Failed to send request. Server returned status: ' + xhr.status, 'error'); // Show error toast
+        }
+    };
+
+    xhr.send(formData); // Send the form data
+}
+
+// Function to show toastr notifications
+function showToast(message, type) {
+    const toastrContainer = document.querySelector('.toastr-container');
+    const toastr = document.createElement('div');
+    toastr.className = `toastr toastr-${type}`;
+    toastr.innerHTML = `<span class="toastr-message">${message}</span>`;
+    toastrContainer.appendChild(toastr);
+
+    // Auto-hide the toastr after 3 seconds
+    setTimeout(() => {
+        toastr.remove();
+    }, 3000);
+}
+            </script>
           <!-- <div class="row">
             <div class="col-md-12">
               <div class="marquee sds">
