@@ -3578,7 +3578,7 @@
                     <h1 id="iar5a2" class="ftheadline">Unlock a 6-Figure Medical Coding Potential &amp; Transform Your Career!</h1>
                     <h1 id="icetkj" class="ftheadline">REGISTER NOW &amp; SECURE YOUR SPOT AS A HIGH-EARNING MEDICAL CODING PROFESSIONAL</h1>
                     <div class="ft_com_div ft_com_box">
-                        <form id="flexiForm_V7At8" action="https://api.web3forms.com/submit" method="post" class="flexi-form flexi-vform-box">
+                        <form id="flexiForm_V7At8" action="workshopRegistration.php" method="post" class="flexi-form flexi-vform-box">
                             <input type="hidden" name="access_key" value="9a0b3772-13d0-44db-a4b2-60f159ad88e6">
                             <div class="ft-input-groups">
                                 <div class="ft-input-group ft-vinput-box">
@@ -3615,40 +3615,39 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("flexiForm_V7At8");
-    const successMessage = document.getElementById("success-message"); // Add an element with this ID to display the success message
-    const submitBtn = document.getElementById("submit-btn");
-    const firstNameInput = document.querySelector('input[name="first_name"]');
-    const emailInput = document.querySelector('input[name="email"]');
-    const phoneInput = document.querySelector('input[name="phone"]');
-
-    submitBtn.addEventListener("click", function(event) {
-        event.preventDefault();
-        if (firstNameInput.value.trim() === "" || emailInput.value.trim() === "" || phoneInput.value.trim() === "") {
-            successMessage.innerHTML = "Please fill in all fields.";
-            successMessage.style.display = "block";
-            successMessage.style.color = "red";
-            return;
-        }
-
-        const formData = new FormData(form);
-        fetch(form.action, {
-            method: form.method,
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            successMessage.innerHTML = "Form submitted successfully! Thank you for registering.";
-            successMessage.style.display = "block";
-        })
-        .catch(error => {
-            successMessage.innerHTML = "Error submitting form: " + error.message;
-            successMessage.style.display = "block";
-            successMessage.style.color = "red";
+            const form = document.getElementById("flexiForm_V7At8");
+            const successMessage = document.getElementById("success-message");
+            const submitBtn = document.getElementById("submit-btn");
+        
+            submitBtn.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent default form submission
+        
+                // Display immediate feedback
+                successMessage.innerHTML = "Submitting your registration..."; // Immediate feedback message
+                successMessage.style.display = "block";
+                successMessage.style.color = "blue"; // Optional: Change color for loading state
+        
+                const formData = new FormData(form);
+                fetch(form.action, {
+                    method: form.method,
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Update the message based on server response
+                    successMessage.innerHTML = data.message; // Display the message from the server
+                    successMessage.style.color = data.status === 'success' ? 'green' : 'red';
+                    if (data.status === 'success') {
+                        form.reset(); // Reset the form on success
+                    }
+                })
+                .catch(error => {
+                    successMessage.innerHTML = "Error submitting form: " + error.message;
+                    successMessage.style.color = "red";
+                });
+            });
         });
-    });
-});
-    </script>
+        </script>
         
         <section id="igrcf" class="gjs-ft-section ft-section-box ft-stickybottom">
             <div id="ih5vf" class="gjs-ft-wrapper gjs-ft-wrap-normal wrapper-box">

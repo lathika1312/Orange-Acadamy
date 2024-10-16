@@ -12,14 +12,18 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
+// Configuration
+$toEmail = 'your_email@example.com'; // Replace with your email address
+$subject = 'Medical Coding Workshop Registration';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Capture and sanitize form data
+    $firstName = htmlspecialchars(trim($_POST['first_name']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $countryCode = htmlspecialchars(trim($_POST['countryCode']));
-    $phone = htmlspecialchars(trim($_POST['sendto']));
+    $phone = htmlspecialchars(trim($_POST['phone']));
 
     // Input validation
-    if (filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match('/^\+?[0-9]{1,3}?[0-9]{1,14}$/', $countryCode . $phone)) {
+    if (!empty($firstName) && !empty($email) && !empty($phone)) {
         // Create an instance of PHPMailer
         $mail = new PHPMailer();
 
@@ -34,19 +38,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Port       = 465;
 
             // Recipients
-            $mail->setFrom('demo.orangeacadamy@gmail.com', 'Brochure Request');
-            $mail->addAddress('medical.orangeacademy@gmail.com');  // Add the recipient email
+            $mail->setFrom('demo.orangeacadamy@gmail.com', 'Workshop Request');
+            $mail->addAddress('medical.orangeacademy@gmail.com');  // Add user email
 
             // Content
             $mail->isHTML(true);
-            $mail->Subject = 'Brochure Request from ' . $email;
-            $mail->Body    = "A new brochure request has been received.<br><br>" .
+            $mail->Subject = $subject;
+            $mail->Body    = "A new workshop registration has been received.<br><br>" .
+                             "First Name: " . $firstName . "<br>" .
                              "Email: " . $email . "<br>" .
-                             "Phone: " . $countryCode . $phone . "<br>";
+                             "Phone: " . $phone . "<br>";
 
             if ($mail->send()) {
                 // Send a success response in JSON
-                echo json_encode(['status' => 'success', 'message' => 'Brochure request sent successfully!']);
+                echo json_encode(['status' => 'success', 'message' => 'Workshop registration sent successfully!']);
             } else {
                 // Send failure response in JSON
                 echo json_encode(['status' => 'error', 'message' => 'Email sending failed.']);
