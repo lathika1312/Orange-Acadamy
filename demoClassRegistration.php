@@ -13,7 +13,7 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
 // Configuration
-$toEmail = 'your_email@example.com'; // Replace with your email address
+$toEmail = 'your_email@example.com'; 
 $subject = 'Demo Class Registration';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
